@@ -1,0 +1,28 @@
+{
+  "name": "parzifalsHunt.eth #1071",
+  "description": "A gamified experience of minting NFTs for fun in search of unique items linked to quest pass-phrases",
+  "image": "ipfs://NewUriToReplace/1071.png",
+  "attributes": [
+    {
+      "trait_type": "background",
+      "value": "Black"
+    },
+    {
+      "trait_type": "bottom lid",
+      "value": "Low"
+    },
+    {
+      "trait_type": "top lid",
+      "value": "High"
+    },
+    {
+      "trait_type": "zodiac",
+      "value": "gemini2"
+    }
+  ],
+  "dna": "ae2e68735dc35e66f08fc88ca6a2aec032725dca",
+  "edition": 1071,
+  "external_url": "parzifals.eth",
+  "date": 1663252534049,
+  "compiler": "HashLips Art Engine - codeSTACKr Modified"
+}

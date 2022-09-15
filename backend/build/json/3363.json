@@ -1,0 +1,28 @@
+{
+  "name": "parzifalsHunt.eth #3363",
+  "description": "A gamified experience of minting NFTs for fun in search of unique items linked to quest pass-phrases",
+  "image": "ipfs://NewUriToReplace/3363.png",
+  "attributes": [
+    {
+      "trait_type": "background",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "bottom lid",
+      "value": "Low"
+    },
+    {
+      "trait_type": "top lid",
+      "value": "Middle"
+    },
+    {
+      "trait_type": "people",
+      "value": "teacher6"
+    }
+  ],
+  "dna": "acf9f53f1f8f246d662b5dfe087c240e648d4ad7",
+  "edition": 3363,
+  "external_url": "parzifals.eth",
+  "date": 1663252390328,
+  "compiler": "HashLips Art Engine - codeSTACKr Modified"
+}
