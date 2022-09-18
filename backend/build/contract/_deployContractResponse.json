@@ -1,0 +1,9 @@
+{
+  "response": "OK",
+  "chain": "rinkeby",
+  "transaction_hash": "0xbd5c77fc88d5ebae449771ad4be2a05715e47de69dbcfca0ecfbe93227fb59b2",
+  "transaction_external_url": "https://rinkeby.etherscan.io/tx/0xbd5c77fc88d5ebae449771ad4be2a05715e47de69dbcfca0ecfbe93227fb59b2",
+  "owner_address": "0xAADa3A46D4A94593CaB32484279B86A4AfD149B0",
+  "name": "parzifalsHunt",
+  "symbol": "pH"
+}

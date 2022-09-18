@@ -1,16 +1,14 @@
 import { Contract, providers, utils } from "ethers";
 import Head from "next/head";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import Web3Modal from "web3modal";
 import { abi, NFT_CONTRACT_ADDRESS } from "../constants";
+import styles from "../styles/Home.module.css";
 
-
-export default function Mint()  {
+export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
   const [walletConnected, setWalletConnected] = useState(false);
-  // loading is set to true when we are waiting for a transaction to get mined == can we change this loading to a spinner?
+
   const [loading, setLoading] = useState(false);
   // checks if the currently connected MetaMask wallet is the owner of the contract
   const [isOwner, setIsOwner] = useState(false);
@@ -18,11 +16,10 @@ export default function Mint()  {
   const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
-  // Seed pharse setting
-  const [result, setResult] = useState(0);
+
 
   /**
-   * publicMint: Mint an NFT
+   * publicMint: Mint an NFT after the presale
    */
   const publicMint = async () => {
     try {
@@ -35,7 +32,7 @@ export default function Mint()  {
         abi,
         signer
       );
-      // call the mint from the contract to mint parzifalHunt
+      // call the mint from the contract to mint the Crypto Dev
       const tx = await nftContract.mint({
         // value signifies the cost of one crypto dev which is "0.01" eth.
         // We are parsing `0.01` string to ether using the utils library from ethers.js
@@ -45,7 +42,7 @@ export default function Mint()  {
       // wait for the transaction to get mined
       await tx.wait();
       setLoading(false);
-      window.alert("You successfully minted pH!");
+      window.alert("You successfully minted a Hunt Item!");
     } catch (err) {
       console.error(err);
     }
@@ -65,7 +62,33 @@ export default function Mint()  {
     }
   };
 
+  /**
+   * publicMintStart: starts the public mint for the NFT Collection
+   */
+  const publicMintStart = async () => {
+    try {
+      // We need a Signer here since this is a 'write' transaction.
+      const signer = await getProviderOrSigner(true);
+      // Create a new instance of the Contract with a Signer, which allows
+      // update methods
+      const nftContract = new Contract(
+        NFT_CONTRACT_ADDRESS,
+        abi,
+        signer
+      );
+      // call the public mint from the contract
+      const tx = await nftContract.publicMintStart();
+      setLoading(true);
+      // wait for the transaction to get mined
+      await tx.wait();
+      setLoading(false);
+      await getOwner();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
+  
   /**
    * getOwner: calls the contract to retrieve the owner
    */
@@ -159,10 +182,9 @@ export default function Mint()  {
       connectWallet();
 
       
-
       getTokenIdsMinted();
 
-    
+     
 
       // set an interval to get the number of token Ids minted every 5 seconds
       setInterval(async function () {
@@ -190,91 +212,50 @@ export default function Mint()  {
     }
 
     // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
-    if (isOwner && !presaleStarted) {
+    if (isOwner) {
       return (
-        <button className={styles.button} onClick={startPresale}>
-          Start Presale!
+        <button className={styles.button} onClick={publicMintStart}>
+           Public Mint 🚀
         </button>
       );
     }
 
     // If connected user is not the owner but presale hasn't started yet, tell them that
-    if (!presaleStarted) {
+    if (!isOwner) {
       return (
         <div>
-          <div className={styles.description}>Presale hasnt started!</div>
+          <div className={styles.description} onClick={publicMint}>Mint hasnt started!</div>
         </div>
       );
     }
 
-    // If presale started, but hasn't ended yet, allow for minting during the presale period
-    if (presaleStarted && !presaleEnded) {
-      return (
-        <div>
-          <div className={styles.description}>
-            Presale has started!!! If your address is whitelisted, Mint a
-            Crypto Dev 🥳
-          </div>
-          <button className={styles.button} onClick={presaleMint}>
-            Presale Mint 🚀
-          </button>
-        </div>
-      );
-    }
+   
 
-    // If presale started and has ended, its time for public minting
-    if (presaleStarted && presaleEnded) {
-      return (
-        <button className={styles.button} onClick={publicMint}>
-          Public Mint 🚀
-        </button>
-      );
-    }
+   
   };
-
- 
-  
 
   return (
     <div>
       <Head>
-        <title>pH</title>
-        <meta name="parzifalsHunt" content="A NFT-Mint Gamification" />
+        <title>Crypto Devs</title>
+        <meta name="description" content="parzifalsHunt" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <ul>
-        <li>
-          <Link href="/">
-            <a>Welcome</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/Mint">
-            <a>Mint</a>
-          </Link>
-        </li>
-      </ul>
-
       <div className={styles.main}>
         <div>
-          <h1 className={styles.title}>Welcome to pH!</h1>
+          <h1 className={styles.title}>Welcome to Parzifals Hunt!</h1>
           <div className={styles.description}>
-            An NFT Holy-Grail Collection. Collect your seed phrase and mint your quest. How based are you?
+            A gamified NFT minting quest experience 🥳
           </div>
           <div className={styles.description}>
-            {tokenIdsMinted}/20 have been minted
+            {tokenIdsMinted}/700 have been minted
           </div>
           {renderButton()}
         </div>
         <div>
-          <img className={styles.image} src="./cryptodevs/0.svg" />
+          <img className={styles.image} src="" />
         </div>
       </div>
-
-     
-
-      
 
       <footer className={styles.footer}>
         Made with &#10084; by Cyberroninn
@@ -282,4 +263,3 @@ export default function Mint()  {
     </div>
   );
 }
-

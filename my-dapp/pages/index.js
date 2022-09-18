@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from "../styles/Home.module.css";
+import React from 'react';
 import { useEffect, useRef, useState } from 'react'
 
 export default function Welcome() {
@@ -40,33 +41,42 @@ export default function Welcome() {
         <meta name="description" content="random word game meets NFTs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <ul>
-        <li>
-          <Link href="/">
-            <a>Welcome</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/Mint">
-            <a>Mint</a>
-          </Link>
-        </li>
-      </ul>
+      
+      <div>
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Welcome</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/mint">
+              <a>Mint</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/profile">
+              <a>Profile</a>
+            </Link>
+          </li>
+        </ul>
+      </div>
+      
       
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to ParzifaL
-        </h1>
+        <div>
+          <h1 className={styles.title}>
+            Welcome to ParzifaL
+          </h1>
 
-        <p className={styles.description}>
-          Get started by generating your random phrase{' '}
-        </p>
-
-        <div className={styles.phrase}>
-          <button onClick={randomClick}>random</button>
-          <h3>result:{result}</h3>
-        </div>
+          <div className={styles.phrase}>
+            <p className={styles.description}>
+              Get started by generating your random phrase{' '}
+            </p>
+            <button onClick={randomClick}>random</button>
+            <h3>result:{result}</h3>
+          </div>
+        </div>       
       </main>
 
       <footer className={styles.footer}>
