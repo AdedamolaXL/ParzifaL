@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "ethers": "^5.7.0",
+    "@thirdweb-dev/react": "^3.0.2",
+    "@thirdweb-dev/sdk": "^3.0.2",
+    "@worldcoin/id": "^0.8.0",
+    "ethers": "^5.7.1",
     "link": "^1.5.1",
     "next": "12.2.5",
+    "node-sass": "^7.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.3.0",

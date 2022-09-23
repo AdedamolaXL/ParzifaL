@@ -4,9 +4,12 @@ import Link from 'next/link'
 import styles from "../styles/Home.module.css";
 import React from 'react';
 import { useEffect, useRef, useState } from 'react'
+import Worldcoin from '../components/worldcoin';
+
+
+
 
 export default function Welcome() {
-
   const [result, setResult] = useState(0);
 
   //an array for each emoji group
@@ -34,6 +37,8 @@ export default function Welcome() {
     setResult(randomPhrase);
   }
 
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -54,16 +59,15 @@ export default function Welcome() {
               <a>Mint</a>
             </Link>
           </li>
-          <li>
-            <Link href="/profile">
-              <a>Profile</a>
-            </Link>
-          </li>
         </ul>
       </div>
       
+     
       
       <main className={styles.main}>
+        
+        <Worldcoin />
+
         <div>
           <h1 className={styles.title}>
             Welcome to ParzifaL
