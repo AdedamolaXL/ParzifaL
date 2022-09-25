@@ -1,5 +1,5 @@
 import React from 'react'
-import Minter from './minter.js'
+import Minter from './Minter';
 
 class Mint extends React.Component {
   render(){

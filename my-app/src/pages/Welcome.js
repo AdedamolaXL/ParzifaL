@@ -1,15 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from "../styles/Home.module.css";
+
+
 import React from 'react';
-import { useEffect, useRef, useState } from 'react'
-import Worldcoin from '../components/worldcoin';
+import { useState } from 'react'
 
 
 
 
-export default function Welcome() {
+
+function Welcome() {
   const [result, setResult] = useState(0);
 
   //an array for each emoji group
@@ -40,41 +38,24 @@ export default function Welcome() {
 
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>ParzifaL</title>
-        <meta name="description" content="random word game meets NFTs" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+     
       
-      <div>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Welcome</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/mint">
-              <a>Mint</a>
-            </Link>
-          </li>
-        </ul>
-      </div>
+
       
      
       
-      <main className={styles.main}>
+      <main >
         
-        <Worldcoin />
+     
 
         <div>
-          <h1 className={styles.title}>
+          <h1>
             Welcome to ParzifaL
           </h1>
 
-          <div className={styles.phrase}>
-            <p className={styles.description}>
+          <div>
+            <p>
               Get started by generating your random phrase{' '}
             </p>
             <button onClick={randomClick}>random</button>
@@ -83,15 +64,15 @@ export default function Welcome() {
         </div>       
       </main>
 
-      <footer className={styles.footer}>
+      <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <span>
+            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
@@ -99,3 +80,4 @@ export default function Welcome() {
   )
 }
 
+export default Welcome;
