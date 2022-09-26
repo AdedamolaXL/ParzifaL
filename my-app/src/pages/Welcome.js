@@ -1,4 +1,4 @@
-import Worldcoin from '../components/worldcoin';
+
 
 import React from 'react';
 import { useState } from 'react'
@@ -29,7 +29,7 @@ function Welcome() {
   let rObject = object[Math.floor(Math.random()*object.length)];
  
 
-  let randomPhrase = `${rSmiley},${rPeople},${rAnimal},${rPlant},${rFood},${rZodiac},${rObject}`;
+  let randomPhrase = `${rSmiley}, ${rPeople}, ${rAnimal}, ${rPlant}, ${rFood}, ${rZodiac}, ${rObject}`;
 
   let randomClick = () => {
     setResult(randomPhrase);
@@ -47,35 +47,25 @@ function Welcome() {
       
       <main >
         
-        <Worldcoin />
+       
 
         <div>
           <h1>
             Welcome to ParzifaL
           </h1>
-
+          <div style={{ backgroundImage: "url(/parzifal.png)"}}>
+          </div>
           <div>
-            <p>
-              Get started by generating your random phrase{' '}
-            </p>
-            <button onClick={randomClick}>random</button>
-            <h3>result:{result}</h3>
+            <h3>
+              Get started by generating your quest-phrase{' '}
+            </h3>
+            <button onClick={randomClick}>Generate</button>
+            <p>Quest items you need: {result}</p>
           </div>
         </div>       
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span>
-            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+     
     </div>
   )
 }

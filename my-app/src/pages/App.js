@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router, Route, Link, Routes
 } from "react-router-dom";
 import Marketplace from './Marketplace';
+import Worldcoin from './worldcoin';
 
 
 export default function App() {
@@ -17,7 +18,13 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Welcome</Link>
+              <Link to="/">Worldcoin</Link>
+            </li>
+            <li>
+              <Link to="/welcome">Welcome</Link>
+            </li>
+            <li>
+              <Link to="/sellnft">Sell</Link>
             </li>
             <li>
               <Link to="/mint">Minter</Link>
@@ -25,9 +32,7 @@ export default function App() {
             <li>
               <Link to="/marketplace">Markeplace</Link>
             </li>
-            <li>
-              <Link to="/sellnft">Sell</Link>
-            </li>
+            
             <li>
               <Link to="/profile">Profile</Link>
             </li>
@@ -35,7 +40,8 @@ export default function App() {
         </nav>
         <Routes>
           <Route path="/mint" element={<Mint />} />
-          <Route path="/" element={<Welcome />} />
+          <Route path="/" element={<Worldcoin />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/sellnft" element={<SellNFT />} />
           <Route path="/profile" element={<Profile />} />
