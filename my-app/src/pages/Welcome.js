@@ -1,4 +1,4 @@
-
+import Worldcoin from '../components/worldcoin';
 
 import React from 'react';
 import { useState } from 'react'
@@ -47,7 +47,7 @@ function Welcome() {
       
       <main >
         
-     
+        <Worldcoin />
 
         <div>
           <h1>
